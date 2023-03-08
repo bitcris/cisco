@@ -1,0 +1,49 @@
+CONFIGURANDO ROTEADOR MODELO 1941
+
+Would you like to enter the initial configuration dialog? [yes/no]: no
+Gostaria de entrar na caixa de diálogo de configuração inicial? [sim não]: não
+
+enable
+configure terminal
+interface gigabitEthernet0/1 
+
+"Selecionei a porta 0/1 para a rede lan, e a porta 0/0 deixarei para a conexão WAN"
+
+"A configuração a seguir está dentro da interface, o input do terminal faicará assim -> Router(config-if)#
+
+IP da interface e máscara.
+ip address 192.168.0.1 255.255.255.0 
+
+Ativa a interface
+no shutdown
+
+Sair da configuração da interface
+exit
+
+"Ao sair da configuração da interface o input do terminal ficará assim -> Router(config)# "
+
+
+CONFIGURAÇÃO DO SERVIDOR DHCP PARA A REDE 192.168.0.0/24
+ip dhcp pool lan 
+"No caso escolhi o nome lan para o pool, mas você pode escolher o nome que melhor descreva seu uso."
+
+Gateway 
+default-router 192.168.0.1
+
+rede
+network 192.168.0.0 255.255.255.0
+
+Servidor de DNS
+dns-server 1.1.1.1
+"Coloquei o endereço 1.1.1.1 da Cloudflare, mas pode ser qualquer outro de sua escolha ex: 8.8.8.8 ou um Servidor local"
+
+Siar do modo configuração do servidor dhcp
+exit
+
+
+input do terminal > Router(config)#
+Ativa o servidor dhcp "lan"
+ip dhcp pool lan
+
+
+
